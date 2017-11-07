@@ -1,0 +1,38 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_vpn_connection.vpn_corp" [label = "aws_vpn_connection.vpn_corp", shape = "box"]
+		"[root] aws_vpn_connection_route.vpn_route_corp" [label = "aws_vpn_connection_route.vpn_route_corp", shape = "box"]
+		"[root] aws_vpn_gateway.vpn_gw_corp" [label = "aws_vpn_gateway.vpn_gw_corp", shape = "box"]
+		"[root] provider.aws" [label = "provider.aws", shape = "diamond"]
+		"[root] aws_vpn_connection.vpn_corp" -> "[root] aws_vpn_gateway.vpn_gw_corp"
+		"[root] aws_vpn_connection.vpn_corp" -> "[root] var.corp_customer_gateway_id"
+		"[root] aws_vpn_connection.vpn_corp" -> "[root] var.name"
+		"[root] aws_vpn_connection.vpn_corp" -> "[root] var.namespaced"
+		"[root] aws_vpn_connection.vpn_corp" -> "[root] var.tags"
+		"[root] aws_vpn_connection_route.vpn_route_corp" -> "[root] aws_vpn_connection.vpn_corp"
+		"[root] aws_vpn_connection_route.vpn_route_corp" -> "[root] var.dest_cidrs"
+		"[root] aws_vpn_gateway.vpn_gw_corp" -> "[root] provider.aws"
+		"[root] aws_vpn_gateway.vpn_gw_corp" -> "[root] var.environment"
+		"[root] aws_vpn_gateway.vpn_gw_corp" -> "[root] var.vpc_id"
+		"[root] output.corp_gtwy_id" -> "[root] aws_vpn_connection.vpn_corp"
+		"[root] output.corp_vpn_gtwy_id" -> "[root] aws_vpn_gateway.vpn_gw_corp"
+		"[root] output.corp_vpn_id" -> "[root] aws_vpn_connection.vpn_corp"
+		"[root] output.corp_vpn_tun1_ip" -> "[root] aws_vpn_connection.vpn_corp"
+		"[root] output.corp_vpn_tun1_key" -> "[root] aws_vpn_connection.vpn_corp"
+		"[root] output.corp_vpn_tun2_ip" -> "[root] aws_vpn_connection.vpn_corp"
+		"[root] output.corp_vpn_tun2_key" -> "[root] aws_vpn_connection.vpn_corp"
+		"[root] output.corp_vpn_type" -> "[root] aws_vpn_connection.vpn_corp"
+		"[root] root" -> "[root] aws_vpn_connection_route.vpn_route_corp"
+		"[root] root" -> "[root] output.corp_gtwy_id"
+		"[root] root" -> "[root] output.corp_vpn_gtwy_id"
+		"[root] root" -> "[root] output.corp_vpn_id"
+		"[root] root" -> "[root] output.corp_vpn_tun1_ip"
+		"[root] root" -> "[root] output.corp_vpn_tun1_key"
+		"[root] root" -> "[root] output.corp_vpn_tun2_ip"
+		"[root] root" -> "[root] output.corp_vpn_tun2_key"
+		"[root] root" -> "[root] output.corp_vpn_type"
+	}
+}
+
